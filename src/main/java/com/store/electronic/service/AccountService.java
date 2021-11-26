@@ -36,6 +36,5 @@ public class AccountService implements Service<Account>{
 
     @Override
     public void buy(User user, Product product) throws ServiceException {
-
     }
 }

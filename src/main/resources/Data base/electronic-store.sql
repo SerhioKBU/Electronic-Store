@@ -19,9 +19,11 @@ create table Product(
 
 create table Users (
                       Id int primary key AUTO_INCREMENT,
+                      accountId int,
                       UserName varchar(50),
                       Password varchar(50),
-                      Email varchar(50)
+                      Email varchar(50),
+                      FOREIGN KEY (accountId)  REFERENCES users(Id)
 );
 
 
@@ -42,10 +44,8 @@ create table transaction(
 
 create table account(
                             Id int primary key AUTO_INCREMENT,
-                            UserId int,
                             login varchar(50),
                             password varchar(50),
-                            email varchar(50),
-                            create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            FOREIGN KEY (UserId)  REFERENCES users(Id)
+                            create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+
 );

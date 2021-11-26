@@ -14,7 +14,6 @@ public class ShowAllProductsController implements Controller {
     @Override
     public ControllerResultDto execute(HttpServletRequest req, HttpServletResponse resp) {
 
-
         try {
             List<Product> allProducts = productService.findAll();
             req.setAttribute("products", allProducts);

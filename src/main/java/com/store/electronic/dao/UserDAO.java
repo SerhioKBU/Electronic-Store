@@ -52,7 +52,6 @@ public class UserDAO extends EntityDAO<User> {
                 String userName = resultSet.getString(2);
                 String password = resultSet.getString(3);
                 String email = resultSet.getString(4);
-
                 return new User(userId, userName, password, email);
             }
 

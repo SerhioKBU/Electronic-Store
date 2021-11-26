@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class LoginController implements Controller {
-
     private UserService userService = new UserService();
 
     @Override

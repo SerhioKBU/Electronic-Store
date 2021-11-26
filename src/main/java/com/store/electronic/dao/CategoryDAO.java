@@ -12,8 +12,7 @@ public class CategoryDAO extends EntityDAO<Category> {
 
     private static final String INSERT_SQL = "Insert Into category(name) Values(?)";
     private static final String SELECT_ALL = "Select id, name from category";
-    public static final String DELETE_DATA = "Delete from category Where id = ?";
-
+    public static final String DELETE_DATA = "Delete from category Where id = (?)";
     public static final String SELECT_ALL_DATA = "SELECT * FROM product";
 
     @Override

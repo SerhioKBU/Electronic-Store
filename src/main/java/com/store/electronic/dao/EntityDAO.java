@@ -1,8 +1,6 @@
 package com.store.electronic.dao;
 
 import com.store.electronic.connectionpool.ConnectionPool;
-import com.store.electronic.dao.DaoException;
-import com.store.electronic.entity.Category;
 
 import java.sql.Connection;
 import java.sql.SQLException;

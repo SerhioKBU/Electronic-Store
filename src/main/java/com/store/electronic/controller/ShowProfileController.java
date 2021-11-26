@@ -16,5 +16,6 @@ public class ShowProfileController implements Controller {
 
         req.setAttribute("user", user);
         return new ControllerResultDto("profile");
+
     }
 }

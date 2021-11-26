@@ -13,5 +13,6 @@ User Account Profile
 <p>E-mail : ${account.email}</p>
 
 <a href="registration.jsp">Registration page</a>
+
 </body>
 </html>

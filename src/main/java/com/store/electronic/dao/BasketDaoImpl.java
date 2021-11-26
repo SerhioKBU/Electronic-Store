@@ -26,7 +26,6 @@ public class BasketDaoImpl implements BasketDAO<Basket>{
                     preparedStatement.execute();
                 }
             }
-
             return basket;
         } catch (SQLException e) {
             throw new DaoException();

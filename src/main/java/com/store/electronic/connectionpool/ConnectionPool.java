@@ -17,8 +17,8 @@ public class ConnectionPool implements ConnectionBuilder{
     private static final String USER  = "root";
     private static final String PASSWORD  = "7454378";
     private static final String URL = "jdbc:mysql://localhost:3306/electronic-store";
-    private int minPool = 4;
-    private int maxPool = 8;
+    private final int minPool = 4;
+    private final int maxPool = 8;
     private int connNum = 0;
 
     private static final String SQL_VERIFICATION_CONNECTION = "select 1";
@@ -73,8 +73,10 @@ public class ConnectionPool implements ConnectionBuilder{
 
     private Connection createNewConnectionForPool() {
         Connection connection = createNewConnection();
-        connNum++;
-        occupiedConnection.add(connection);
+        for (int i = 0; i < minPool; i++) {
+            connNum++;
+            occupiedConnection.add(connection);
+        }
         return connection;
     }
 

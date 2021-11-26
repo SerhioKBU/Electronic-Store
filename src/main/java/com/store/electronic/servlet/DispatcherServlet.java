@@ -1,6 +1,5 @@
 package com.store.electronic.servlet;
 
-import com.store.electronic.connectionpool.ConnectionPool;
 import com.store.electronic.controller.Controller;
 import com.store.electronic.controller.ControllerFactory;
 import com.store.electronic.controller.ControllerResultDto;
@@ -21,11 +20,9 @@ public class DispatcherServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
 
     private ControllerFactory controllerFactory;
-    private ConnectionPool connectionPool;
 
     @Override
     public void init() throws ServletException {
-        //connectionPool.getConnection();
         controllerFactory = new ControllerFactory();
         super.init();
         logger.info("Servlet is created");

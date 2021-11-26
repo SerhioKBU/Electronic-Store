@@ -1,10 +1,8 @@
 package com.store.electronic.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-@SuppressWarnings("Lombok")
 @Data
 @Accessors(chain = true)
 public class User extends BaseEntity{

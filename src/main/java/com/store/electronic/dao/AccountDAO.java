@@ -32,7 +32,6 @@ public class AccountDAO extends EntityDAO<Account> {
             preparedStatement.setString(3, account.getPassword());
             preparedStatement.setString(4, account.getEmail());
 
-
             return preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException();

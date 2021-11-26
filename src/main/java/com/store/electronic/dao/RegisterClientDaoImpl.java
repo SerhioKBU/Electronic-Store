@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class RegisterClientDaoImpl implements RegisterClientDao{
     private static final String ADD_ACCOUNT =
-            "INSERT account(login, password, email) VALUE(?, ?, ?)";
+            "INSERT account(login, password) VALUE(?, ?)";
     private static final String ADD_USER =
             "INSERT into users(accountId, UserName, Password, Email) VALUES (?, ?, ?, ?)";
 
@@ -24,7 +24,6 @@ public class RegisterClientDaoImpl implements RegisterClientDao{
             int i = 1;
             preparedStatement.setString(i++, user.getAccount().getLogin());
             preparedStatement.setString(i++, user.getAccount().getPassword());
-            preparedStatement.setString(i++, user.getAccount().getEmail());
 
             if (preparedStatement.executeUpdate() > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();

@@ -16,8 +16,6 @@ public class ControllerFactory {
         controllerMap.put("GET/registration", new ShowPageController("registration"));
         controllerMap.put("POST/registration", new RegistrationController());
         controllerMap.put("GET/registrationProfile", new ShowPageController("registrationProfile"));
-
-
     }
 
     public Controller getController(HttpServletRequest request) {

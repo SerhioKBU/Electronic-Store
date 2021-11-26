@@ -19,7 +19,6 @@ public class UserService implements Service{
 
     public User findByUserName(String username) {
         try {
-            System.out.println("!!!!!!");
             return userDao.findByUsername(username);
         } catch (DaoException e) {
             e.printStackTrace();

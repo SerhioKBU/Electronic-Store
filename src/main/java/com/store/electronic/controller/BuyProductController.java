@@ -26,5 +26,6 @@ public class BuyProductController implements Controller{
             e.printStackTrace();
         }
         return new ControllerResultDto("buyProduct");
+
     }
 }

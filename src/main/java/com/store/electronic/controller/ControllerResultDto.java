@@ -1,5 +1,4 @@
 package com.store.electronic.controller;
-
 import lombok.Data;
 
 @Data

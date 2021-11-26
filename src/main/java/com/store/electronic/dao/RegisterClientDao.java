@@ -12,7 +12,7 @@ public interface RegisterClientDao {
                 autoCloseable.close();
             } catch (Exception e) {
                 e.printStackTrace();
-                throw new IllegalStateException("Cannot close " + autoCloseable);
+                throw new IllegalStateException("Cannot close " +autoCloseable);
             }
         }
     }

@@ -14,9 +14,9 @@ public class ProductDAO extends EntityDAO<Product> {
     private static final String INSERT_SQL = "INSERT INTO product" +
             "(CategoryId, name, cost) VALUES(?, ?, ?, ?)";
     private static final String FIND_BY_ID =
-            "SELECT id, CategoryId, Name, Description, Cost from product WHERE id = '?';";
+            "SELECT id, CategoryId, Name, Description, Cost from product WHERE id = (?)";
     public static final String SELECT_ALL_DATA = "SELECT * FROM product";
-    public static final String DELETE_DATA = "DELETE FROM product WHERE id = ?";
+    public static final String DELETE_DATA = "DELETE FROM product WHERE id = (?)";
 
     @Override
     Integer create(Product product) throws DaoException {

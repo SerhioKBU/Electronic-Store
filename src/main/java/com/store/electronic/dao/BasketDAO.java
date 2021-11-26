@@ -1,5 +1,4 @@
 package com.store.electronic.dao;
-
 import com.store.electronic.connectionpool.ConnectionPool;
 
 import java.sql.Connection;
