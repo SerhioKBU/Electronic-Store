@@ -20,9 +20,10 @@ public class Account extends BaseEntity{
     public Account() {
     }
 
-    public Account(Integer id, String login, String password) {
+    public Account(Integer id, String login, String password, String email) {
         super(id);
         this.login = login;
         this.password = password;
+        this.email = email;
     }
 }

@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%--@elvariable id="user" type="com.store.electronic.entity.Product"--%>
+<%--@elvariable id="product" type="com.store.electronic.entity.Product"--%>
 <html>
 <head>
     <title>Profile </title>
@@ -13,7 +13,7 @@
     <br>
     <c:out value="${product.id}"/>
     <c:out value="${product.name}"/>
-    <a href="addToBasket?productId=${product.id}">Buy these product</a>
+    <a href="buyProduct.jsp?productId=${product.id}">Buy these product</a>
 </c:forEach>
 
 

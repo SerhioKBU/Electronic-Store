@@ -15,6 +15,17 @@ abstract public class EntityDAO<T>{
     abstract List<T> findAll() throws DaoException;
     abstract T getById(int id) throws DaoException;
 
+    void close(AutoCloseable autoCloseable){
+        if (autoCloseable != null) {
+            try {
+                autoCloseable.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new IllegalStateException("Cannot close " + autoCloseable);
+            }
+        }
+    }
+
     private final ConnectionPool connectionPool = ConnectionPool.getInstance();;
 
     Connection getConnection() throws SQLException {

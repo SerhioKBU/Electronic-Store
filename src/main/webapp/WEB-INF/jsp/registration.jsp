@@ -7,7 +7,7 @@
 <body>
 <form method="post">
     <p>"ELECTRONIC STORE"</p>
-    <h2>Registration:</h2>
+    <p><h2>Registration:</h2>
     Please enter your login
     <br>
     <label>
@@ -24,6 +24,12 @@
     <br>
     <label>
         <input type="text" name="email"/>
+    </label>
+    <br>
+    Please enter your name
+    <br>
+    <label>
+        <input type="text" name="name"/>
     </label>
     <br>
     <button name="Submit" value="Except" type="Submit">Except</button>

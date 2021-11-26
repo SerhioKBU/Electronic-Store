@@ -25,8 +25,6 @@ public class BuyProductController implements Controller{
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-
-
-        return null;
+        return new ControllerResultDto("buyProduct");
     }
 }

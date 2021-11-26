@@ -4,8 +4,8 @@ import com.store.electronic.connectionpool.ConnectionPool;
 import com.store.electronic.controller.Controller;
 import com.store.electronic.controller.ControllerFactory;
 import com.store.electronic.controller.ControllerResultDto;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 @WebServlet("/electronic-store/*")
 public class DispatcherServlet extends HttpServlet {
 
-    //private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
 
     private ControllerFactory controllerFactory;
     private ConnectionPool connectionPool;
@@ -28,7 +28,7 @@ public class DispatcherServlet extends HttpServlet {
         //connectionPool.getConnection();
         controllerFactory = new ControllerFactory();
         super.init();
-        //logger.info("Servlet is created");
+        logger.info("Servlet is created");
     }
 
     @Override

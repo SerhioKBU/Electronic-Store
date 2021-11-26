@@ -7,7 +7,7 @@
 <form method="post">
     Please enter your login
     <br>
-    <input type="text" name="userName"/>
+    <input type="text" name="login"/>
     <input type="password" name="password"/>
     <br>
     <button name="Submit" value="Login" type="Submit">Login</button>

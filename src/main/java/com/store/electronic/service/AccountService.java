@@ -25,6 +25,15 @@ public class AccountService implements Service<Account>{
         }
     }
 
+    public Account findByValue(String value) throws ServiceException {
+        try {
+            return accountDAO.find(value);
+        } catch (DaoException e) {
+            e.printStackTrace();
+            throw new ServiceException("failed to read from database");
+        }
+    }
+
     @Override
     public void buy(User user, Product product) throws ServiceException {
 

@@ -12,14 +12,18 @@ import javax.servlet.http.HttpSession;
 
 public class RegistrationController implements Controller{
 
-    private UserService userService = new UserService();
-
+    /**
+     * @param req - Http Servlet Request
+     * @param resp - Http Servlet Response
+     * @return User Account Profile
+     */
     @Override
     public ControllerResultDto execute(HttpServletRequest req, HttpServletResponse resp) {
         boolean isCreated = false;
         String login = req.getParameter("userName");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
+        String name = req.getParameter("name");
 
         if (login == null || password == null || email == null) {
             return new ControllerResultDto("error");
@@ -27,10 +31,10 @@ public class RegistrationController implements Controller{
 
         User user = new User();
 
-        //user = userService.findByUserName(userName);
         RegistrationUserService registrationUserService = new RegistrationUserService();
         user.setAccount(new Account());
         user.getAccount().setLogin(login).setPassword(password).setEmail(email);
+        user.setUserName(name).setPassword(password);
         System.out.println("user:  " + user);
 
         try {
@@ -42,7 +46,8 @@ public class RegistrationController implements Controller{
 
         if (isCreated) {
             req.setAttribute("account", user.getAccount());
-            req.getSession(true).setAttribute("userId", user.getUserName());
+            //req.setAttribute("user", user);
+            req.getSession(true).setAttribute("userId", user.getId());
             return new ControllerResultDto("registrationProfile");
         } else {
             return new ControllerResultDto("error-403");
