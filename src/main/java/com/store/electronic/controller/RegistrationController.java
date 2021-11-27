@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Registration of new account for user
+ * @author serhii_chebanov
+ */
 public class RegistrationController implements Controller{
 
     /**
@@ -19,19 +23,19 @@ public class RegistrationController implements Controller{
      */
     @Override
     public ControllerResultDto execute(HttpServletRequest req, HttpServletResponse resp) {
+        RegistrationUserService registrationUserService = new RegistrationUserService();
+
         boolean isCreated = false;
         String login = req.getParameter("userName");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String name = req.getParameter("name");
 
-        if (login == null || password == null || email == null) {
-            return new ControllerResultDto("error");
+        if (login.isEmpty() || password.isEmpty() || name.isEmpty() || email.isEmpty()) {
+            return new ControllerResultDto("registration");
         }
 
         User user = new User();
-
-        RegistrationUserService registrationUserService = new RegistrationUserService();
         user.setAccount(new Account());
         user.getAccount().setLogin(login).setPassword(password).setEmail(email);
         user.setUserName(name).setPassword(password).setEmail(email);
@@ -46,7 +50,6 @@ public class RegistrationController implements Controller{
 
         if (isCreated) {
             req.setAttribute("account", user.getAccount());
-            //req.setAttribute("user", user);
             req.getSession(true).setAttribute("userId", user.getId());
             return new ControllerResultDto("registrationProfile");
         } else {

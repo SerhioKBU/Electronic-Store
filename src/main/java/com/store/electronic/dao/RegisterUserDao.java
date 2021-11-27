@@ -5,7 +5,7 @@ import com.store.electronic.connectionpool.ConnectionPool;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public interface RegisterClientDao {
+public interface RegisterUserDao {
     default void close(AutoCloseable autoCloseable){
         if (autoCloseable != null) {
             try {
@@ -29,10 +29,10 @@ public interface RegisterClientDao {
         }
     }
 
-    ConnectionPool connectionPool = ConnectionPool.getInstance();;
+    ConnectionPool connectionPool = ConnectionPool.getInstance();
 
     default Connection getConnection() throws SQLException {
-        Connection connection = null;
+        Connection connection;
         connection = connectionPool.getConnection();
         return connection;
     }
