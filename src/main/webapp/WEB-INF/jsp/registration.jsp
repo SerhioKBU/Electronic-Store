@@ -13,9 +13,7 @@
     <label>
         <input type="text" name="userName"/>
     </label>
-    <br>
-    Please enter your password
-    <br>
+    <br> Please enter your password <br>
     <label>
         <input type="password" name="password"/>
     </label>

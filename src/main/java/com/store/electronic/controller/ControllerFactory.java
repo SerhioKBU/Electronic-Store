@@ -10,9 +10,9 @@ public class ControllerFactory {
 
     private void init() {
         //controllerMap.put("GET/profile", new ShowProfileController());
-        //controllerMap.put("GET/profile", new ShowPageController("profile"));
-        //controllerMap.put("GET/login", new ShowPageController("login"));
-        //controllerMap.put("POST/login", new LoginController());
+        controllerMap.put("GET/profile", new ShowPageController("profile"));
+        controllerMap.put("GET/login", new ShowPageController("login"));
+        controllerMap.put("POST/login", new LoginController());
         controllerMap.put("GET/registration", new ShowPageController("registration"));
         controllerMap.put("POST/registration", new RegistrationController());
         controllerMap.put("GET/registrationProfile", new ShowPageController("registrationProfile"));

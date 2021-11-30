@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class RegisterUserDaoImpl implements RegisterUserDao {
     private static final String ADD_ACCOUNT =
-            "INSERT account(login, password) VALUE(?, ?)";
+            "INSERT into account(login, password) VALUE (?, ?)";
     private static final String ADD_USER =
             "INSERT into users(accountId, UserName, Password, Email) VALUES (?, ?, ?, ?)";
 

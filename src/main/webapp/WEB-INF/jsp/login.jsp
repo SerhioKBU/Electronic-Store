@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -5,7 +6,7 @@
 </head>
 <body>
 <form method="post">
-    Please enter your name
+    Please enter your login
     <br>
     <input type="text" name="login"/>
     <br>

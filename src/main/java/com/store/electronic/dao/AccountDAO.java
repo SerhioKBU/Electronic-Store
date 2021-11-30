@@ -62,25 +62,34 @@ public class AccountDAO extends EntityDAO<Account> {
     }
 
     public Account find(String login) throws DaoException {
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement =
-                     connection.prepareStatement(FIND_ACCOUNT_BY_LOGIN)
-        ) {
-            preparedStatement.setString(1, login);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String loginn = resultSet.getString(2);
-                String password = resultSet.getString(3);
-                String email = resultSet.getString(4);
-                return new Account(id, loginn, password, email);
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Account resultAccount = null;
 
+        try {
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement(FIND_ACCOUNT_BY_LOGIN);
+            preparedStatement.setString(1, login);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                resultAccount = new Account();
+                resultAccount.setLogin(resultSet.getString("login"));
+                resultAccount.setPassword(resultSet.getString("password"));
+                resultAccount.setCreateTime(Timestamp.valueOf(resultSet.getString("create_time")).toLocalDateTime());
+                resultAccount.setId(resultSet.getInt("account.id"));
             }
-            return null;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            throw new DaoException();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DaoException("Failed to connect table account");
+        } finally {
+            close(resultSet);
+            close(preparedStatement);
+            close(connection);
         }
+        return resultAccount;
     }
 
     @Override
