@@ -36,7 +36,6 @@ public class LoginController implements Controller {
         if (account.getLogin().equals(login) && account.getPassword().equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("account", account);
-            //req.getSession(true);
             return new ControllerResultDto("profile");
         } else {
             return new ControllerResultDto("error-403");

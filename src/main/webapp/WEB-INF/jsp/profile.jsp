@@ -3,7 +3,7 @@
 <%--@elvariable id="account" type="com.store.electronic.entity.Account"--%>
 <html>
 <head>
-    <title>User Profile </title>
+    <title>User Login Profile </title>
 </head>
 <body>
 User Profile

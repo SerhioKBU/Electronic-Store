@@ -16,6 +16,10 @@ public class UserDAO extends EntityDAO<User> {
     public static final String DELETE_DATA = "DELETE FROM user WHERE id = ?";
 
     public User user;
+
+
+
+
     public User findByUsername(String username) throws DaoException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement =

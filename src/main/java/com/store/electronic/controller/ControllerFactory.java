@@ -22,7 +22,6 @@ public class ControllerFactory {
         if (controllerMap.isEmpty()) {
             init();
         }
-
         return controllerMap.get(request.getMethod() + request.getPathInfo());
     }
 }

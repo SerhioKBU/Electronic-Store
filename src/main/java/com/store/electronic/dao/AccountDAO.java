@@ -14,7 +14,7 @@ public class AccountDAO extends EntityDAO<Account> {
     static final String FIND_ACCOUNT_BY_ID =
             "SELECT login, password, name, create_time FROM account WHERE id = ?";
     private static final String FIND_ACCOUNT_BY_LOGIN =
-            "SELECT id, login, password, email, create_time FROM account WHERE login = (?)";
+            "SELECT id, login, password, create_time FROM account WHERE login = (?)";
 
     /**
      * Insert account's data in database
