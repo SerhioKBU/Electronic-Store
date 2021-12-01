@@ -22,9 +22,8 @@ public class RegisterUserDaoImpl implements RegisterUserDao {
 
             preparedStatement = connection.prepareStatement(ADD_ACCOUNT, Statement.RETURN_GENERATED_KEYS);
 
-            int i = 1;
-            preparedStatement.setString(i++, user.getAccount().getLogin());
-            preparedStatement.setString(i++, user.getAccount().getPassword());
+            preparedStatement.setString(1, user.getAccount().getLogin());
+            preparedStatement.setString(2, user.getAccount().getPassword());
 
             if (preparedStatement.executeUpdate() > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
@@ -35,10 +34,9 @@ public class RegisterUserDaoImpl implements RegisterUserDao {
 
             preparedStatement = connection.prepareStatement(ADD_USER, Statement.RETURN_GENERATED_KEYS);
 
-            i = 1;
-            preparedStatement.setInt(i++, user.getAccount().getId());
-            preparedStatement.setString(i++, user.getUserName());
-            preparedStatement.setString(i++, user.getEmail());
+            preparedStatement.setInt(1, user.getAccount().getId());
+            preparedStatement.setString(2, user.getUserName());
+            preparedStatement.setString(3, user.getEmail());
 
             if (preparedStatement.executeUpdate() > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
