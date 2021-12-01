@@ -107,7 +107,5 @@ public class UserDAO extends EntityDAO<User> {
     }
 
     public void update(User user) {
-        
     }
-
 }

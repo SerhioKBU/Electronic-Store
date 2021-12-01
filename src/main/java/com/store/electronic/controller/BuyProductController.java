@@ -16,15 +16,15 @@ public class BuyProductController implements Controller{
 
     @Override
     public ControllerResultDto execute(HttpServletRequest req, HttpServletResponse resp) {
-        try {
-            int productId = Integer.parseInt(req.getParameter("productId"));
-            Integer userId = (Integer) req.getSession().getAttribute("userId");
-            Product product = productService.findById(productId);
-            User user = userService.findById(userId);
-            userService.buy(user, product);
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
+        //try {
+//            int productId = Integer.parseInt(req.getParameter("productId"));
+//            Integer userId = (Integer) req.getSession().getAttribute("userId");
+//            Product product = productService.findById(productId);
+//            User user = userService.findById(userId);
+//            userService.buy(user, product);
+//        } catch (ServiceException e) {
+//            e.printStackTrace();
+//        }
         return new ControllerResultDto("buyProduct");
 
     }

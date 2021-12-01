@@ -25,7 +25,6 @@ create table Users (
                       FOREIGN KEY (accountId)  REFERENCES users(Id)
 );
 
-
 create table Basket(
                        Id int primary key AUTO_INCREMENT,
                        UserId int,

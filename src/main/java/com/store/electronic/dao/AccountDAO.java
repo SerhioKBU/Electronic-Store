@@ -10,9 +10,9 @@ import java.util.List;
 public class AccountDAO extends EntityDAO<Account> {
     static final String INSERT_DATA
             = "INSERT account(login, password) VALUE(?, ?))";
-    static final String DELETE_ACCOUNT = "DELETE FROM account WHERE id = ?";
+    static final String DELETE_ACCOUNT = "DELETE FROM account WHERE id = (?)";
     static final String FIND_ACCOUNT_BY_ID =
-            "SELECT login, password, name, create_time FROM account WHERE id = ?";
+            "SELECT login, password, name, create_time FROM account WHERE id = (?)";
     private static final String FIND_ACCOUNT_BY_LOGIN =
             "SELECT id, login, password, create_time FROM account WHERE login = (?)";
 

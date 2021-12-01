@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>ELECTRONIC STORE</title>
-    <link rel="stylesheet" href="../../css/style.css">
+<%--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--%>
 </head>
 <body>
 <form method="post">
@@ -32,5 +32,9 @@
     <br>
     <button name="Submit" value="Except" type="Submit">Except</button>
 </form>
+
+<div>
+    <button onclick="location.href='/'">Back to main menu</button>
+</div>
 </body>
 </html>

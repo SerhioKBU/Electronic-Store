@@ -38,7 +38,6 @@ public class RegisterUserDaoImpl implements RegisterUserDao {
             i = 1;
             preparedStatement.setInt(i++, user.getAccount().getId());
             preparedStatement.setString(i++, user.getUserName());
-            //preparedStatement.setString(3, user.getPassword());
             preparedStatement.setString(i++, user.getEmail());
 
             if (preparedStatement.executeUpdate() > 0) {

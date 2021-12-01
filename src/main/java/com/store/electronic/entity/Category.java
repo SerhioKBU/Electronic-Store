@@ -1,6 +1,5 @@
 package com.store.electronic.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

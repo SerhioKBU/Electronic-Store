@@ -9,7 +9,6 @@ public class User extends BaseEntity{
     private String userName;
     private String email;
     private Account account;
-
     private Integer money;
 
     public User(Integer id, String userName, String email) {

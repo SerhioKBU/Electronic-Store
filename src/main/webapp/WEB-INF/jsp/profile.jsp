@@ -11,6 +11,9 @@ User Profile
 <p>Login : ${account.login}</p>
 <p>Password : ${account.password}</p>
 <p>E-mail : ${account.createTime}</p>
+
+<div>
+    <button onclick="location.href='/'">Back to main menu</button>
+</div>
 </body>
-<a href="\login.jsp">Login page</a>
 </html>

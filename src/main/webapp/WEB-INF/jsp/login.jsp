@@ -16,5 +16,9 @@
     <br>
     <button name="Submit" value="Login" type="Submit">Login</button>
 </form>
+
+<div>
+    <button onclick="location.href='/'">Back to main menu</button>
+</div>
 </body>
 </html>

@@ -16,6 +16,7 @@
     <div>    <!-- buttons holder -->
         <button onclick="location.href='/electronic-store/registration'">Registration</button>
         <button onclick="location.href='/electronic-store/login'">Login</button>
+        <button onclick="location.href='/electronic-store/category'">Category</button>
     </div>
 </div>
 
