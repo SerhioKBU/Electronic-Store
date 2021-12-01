@@ -30,7 +30,6 @@ public class AccountDAO extends EntityDAO<Account> {
             preparedStatement.setInt(1, account.getId());
             preparedStatement.setString(2, account.getLogin());
             preparedStatement.setString(3, account.getPassword());
-            preparedStatement.setString(4, account.getEmail());
 
             return preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -51,9 +50,8 @@ public class AccountDAO extends EntityDAO<Account> {
                 int userId = resultSet.getInt(1);
                 String login = resultSet.getString(2);
                 String password = resultSet.getString(3);
-                String email = resultSet.getString(4);
 
-                return new Account(userId, login, password, email);
+                return new Account(userId, login, password);
             }
             return null;
         } catch (SQLException throwables) {

@@ -21,7 +21,6 @@ create table Users (
                       Id int primary key AUTO_INCREMENT,
                       accountId int,
                       UserName varchar(50),
-                      Password varchar(50),
                       Email varchar(50),
                       FOREIGN KEY (accountId)  REFERENCES users(Id)
 );

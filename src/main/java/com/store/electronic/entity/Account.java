@@ -12,16 +12,14 @@ import java.time.LocalDateTime;
 public class Account extends BaseEntity{
     private String login;
     private String password;
-    private String email;
     private LocalDateTime createTime;
 
     public Account() {
     }
 
-    public Account(Integer id, String login, String password, String email) {
+    public Account(Integer id, String login, String password) {
         super(id);
         this.login = login;
         this.password = password;
-        this.email = email;
     }
 }

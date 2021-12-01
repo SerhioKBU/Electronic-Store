@@ -37,8 +37,8 @@ public class RegistrationController implements Controller{
 
         User user = new User();
         user.setAccount(new Account());
-        user.getAccount().setLogin(login).setPassword(password).setEmail(email);
-        user.setUserName(name).setPassword(password).setEmail(email);
+        user.getAccount().setLogin(login).setPassword(password);
+        user.setUserName(name).setEmail(email);
         System.out.println("user:  " + user);
 
         try {

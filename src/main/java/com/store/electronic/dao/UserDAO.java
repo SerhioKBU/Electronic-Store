@@ -9,16 +9,13 @@ import java.util.List;
 import static com.store.electronic.utils.JdbcConnect.getConnection;
 
 public class UserDAO extends EntityDAO<User> {
-    public static final String INSERT_DATA = "INSERT into user(UserName, Password, Email) VALUES (?, ?)";
-    public static final String SELECT_FIND_BY_NAME  = "SELECT id, username, password, email  FROM users WHERE username = (?)";
-    public static final String SELECT_FIND_BY_ID = "SELECT id, username, password, email FROM users WHERE id = ?";
+    public static final String INSERT_DATA = "INSERT into users(username, email) VALUES (?, ?)";
+    public static final String SELECT_FIND_BY_NAME  = "SELECT id, username, email  FROM users WHERE username = (?)";
+    public static final String SELECT_FIND_BY_ID = "SELECT id, username, email FROM users WHERE id = ?";
     public static final String SELECT_ALL_DATA = "SELECT * FROM users";
-    public static final String DELETE_DATA = "DELETE FROM user WHERE id = ?";
+    public static final String DELETE_DATA = "DELETE FROM users WHERE id = ?";
 
     public User user;
-
-
-
 
     public User findByUsername(String username) throws DaoException {
         try (Connection connection = getConnection();
@@ -30,9 +27,8 @@ public class UserDAO extends EntityDAO<User> {
             if (resultSet.next()) {
                 int id = resultSet.getInt(1);
                 String usernameField = resultSet.getString(2);
-                String password = resultSet.getString(3);
-                String email = resultSet.getString(4);
-                return new User(id, usernameField, password, email);
+                String email = resultSet.getString(3);
+                return new User(id, usernameField, email);
 
             }
             return null;
@@ -53,9 +49,8 @@ public class UserDAO extends EntityDAO<User> {
             if (resultSet.next()) {
                 int userId = resultSet.getInt(1);
                 String userName = resultSet.getString(2);
-                String password = resultSet.getString(3);
-                String email = resultSet.getString(4);
-                return new User(userId, userName, password, email);
+                String email = resultSet.getString(3);
+                return new User(userId, userName, email);
             }
 
             return null;
@@ -72,8 +67,7 @@ public class UserDAO extends EntityDAO<User> {
                      connection.prepareStatement(INSERT_DATA, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, user.getId());
             preparedStatement.setString(2, user.getUserName());
-            preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(4, user.getEmail());
+            preparedStatement.setString(3, user.getEmail());
 
             return preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -103,7 +97,6 @@ public class UserDAO extends EntityDAO<User> {
                 new User();
                 user.setId(resultSet.getInt("id"));
                 user.setUserName(resultSet.getString("name"));
-                user.setPassword(resultSet.getString("password"));
                 user.setEmail(resultSet.getString("email"));
                 users.add(user);
             }

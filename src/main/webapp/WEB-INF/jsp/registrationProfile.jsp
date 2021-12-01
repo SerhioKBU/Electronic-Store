@@ -10,7 +10,6 @@ User Account Profile
 <p>Id : ${account.id} </p>
 <p>Login : ${account.login}</p>
 <p>Password : ${account.password}</p>
-<p>E-mail : ${account.email}</p>
 
 <a href="registration.jsp">Registration page</a>
 
