@@ -7,15 +7,4 @@ import java.util.List;
 
 public interface BasketDAO<T> {
     T insertOrUpdate(T type) throws DaoException;
-    void delete(T type) throws DaoException;
-    List<T> findAll() throws DaoException;
-    T getById(int id) throws DaoException;
-
-    ConnectionPool connectionPool = ConnectionPool.getInstance();;
-
-    default Connection getConnection() throws SQLException {
-        Connection connection = null;
-        connection = connectionPool.getConnection();
-        return connection;
-    }
 }

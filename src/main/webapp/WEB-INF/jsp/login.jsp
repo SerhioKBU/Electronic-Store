@@ -5,6 +5,9 @@
     <title>ELECTRONIC STORE</title>
 </head>
 <body>
+<div>
+    <h1>ELECTRONIC STORE</h1>
+</div>
 <form method="post">
     Please enter your login
     <br>

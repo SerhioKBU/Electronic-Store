@@ -21,7 +21,6 @@ public class CategoryController implements Controller{
 
         try {
             serviceList = categoryService.findAll();
-
         } catch (ServiceException e) {
             e.printStackTrace();
             return new ControllerResultDto("error");

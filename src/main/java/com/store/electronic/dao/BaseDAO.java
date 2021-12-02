@@ -5,14 +5,14 @@ import com.store.electronic.connectionpool.ConnectionPool;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public interface RegisterUserDao {
+public interface BaseDAO {
     default void close(AutoCloseable autoCloseable){
         if (autoCloseable != null) {
             try {
                 autoCloseable.close();
             } catch (Exception e) {
                 e.printStackTrace();
-                throw new IllegalStateException("Cannot close " +autoCloseable);
+                throw new IllegalStateException("Cannot close " + autoCloseable);
             }
         }
     }
@@ -29,10 +29,10 @@ public interface RegisterUserDao {
         }
     }
 
-    ConnectionPool connectionPool = ConnectionPool.getInstance();
+    ConnectionPool connectionPool = ConnectionPool.getInstance();;
 
     default Connection getConnection() throws SQLException {
-        Connection connection;
+        Connection connection = null;
         connection = connectionPool.getConnection();
         return connection;
     }

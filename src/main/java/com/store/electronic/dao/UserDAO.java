@@ -1,12 +1,9 @@
 package com.store.electronic.dao;
 
 import com.store.electronic.entity.User;
-import com.store.electronic.utils.JdbcConnect;
-import lombok.SneakyThrows;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import static com.store.electronic.utils.JdbcConnect.getConnection;
 
 public class UserDAO extends EntityDAO<User> {
     public static final String INSERT_DATA = "INSERT into users(username, email) VALUES (?, ?)";
@@ -59,7 +56,6 @@ public class UserDAO extends EntityDAO<User> {
         }
     }
 
-    @SneakyThrows
     @Override
     Integer create(User user) throws  DaoException {
         try (Connection connection = getConnection();

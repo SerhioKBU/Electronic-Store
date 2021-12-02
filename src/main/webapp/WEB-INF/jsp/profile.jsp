@@ -6,6 +6,9 @@
     <title>User Login Profile </title>
 </head>
 <body>
+<div>
+    <h1>ELECTRONIC STORE</h1>
+</div>
 User Profile
 <p>Id : ${account.id} </p>
 <p>Login : ${account.login}</p>

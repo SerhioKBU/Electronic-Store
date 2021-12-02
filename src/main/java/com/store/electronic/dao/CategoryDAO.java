@@ -6,8 +6,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.store.electronic.utils.JdbcConnect.getConnection;
-
 public class CategoryDAO extends EntityDAO<Category> {
 
     private static final String INSERT_SQL = "Insert Into category(name) Values(?)";

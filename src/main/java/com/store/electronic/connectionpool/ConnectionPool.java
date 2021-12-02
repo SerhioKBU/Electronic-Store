@@ -7,6 +7,9 @@ import java.sql.*;
 import java.util.*;
 import java.util.concurrent.Executor;
 
+/**
+ * Create Pool Connection
+ */
 public class ConnectionPool implements ConnectionBuilder{
 
     private static final Logger logger = LoggerFactory.getLogger(ConnectionPool.class);

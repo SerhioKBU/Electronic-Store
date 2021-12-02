@@ -6,10 +6,8 @@
     <title>Electronic store</title>
 </head>
 <body>
-<%--<c:redirect url="/electronic-store/*"/>--%>
-<%--<!-- header -->--%>
 <div>
-    <h1>"ELECTRONIC STORE"</h1>
+    <h1>ELECTRONIC STORE</h1>
 </div>
 
 <div>       <!-- content -->

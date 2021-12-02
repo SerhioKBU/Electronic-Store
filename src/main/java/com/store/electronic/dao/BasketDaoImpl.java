@@ -8,9 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import static com.store.electronic.utils.JdbcConnect.getConnection;
-
-public class BasketDaoImpl implements BasketDAO<Basket>{
+public class BasketDaoImpl extends EntityDAO<Basket> implements BasketDAO<Basket>{
     private static final String INSERT_BASKET_SQL = "INSERT INTO Basket(UserId, ProductId) VALUES(?, ?)";
     private static final String DELETE_BASKET_SQL = "DELETE FROM Basket WHERE userId = ?";
 
@@ -30,6 +28,11 @@ public class BasketDaoImpl implements BasketDAO<Basket>{
         } catch (SQLException e) {
             throw new DaoException();
         }
+    }
+
+    @Override
+    Integer create(Basket type) throws DaoException {
+        return null;
     }
 
     @Override

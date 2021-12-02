@@ -1,7 +1,6 @@
 package com.store.electronic.dao;
 
 import com.store.electronic.entity.Account;
-import com.store.electronic.entity.User;
 import lombok.SneakyThrows;
 
 import java.sql.*;
@@ -37,7 +36,6 @@ public class AccountDAO extends EntityDAO<Account> {
         }
     }
 
-    @SneakyThrows
     @Override
     public Account getById(int id) throws DaoException {
         try (Connection connection = getConnection();

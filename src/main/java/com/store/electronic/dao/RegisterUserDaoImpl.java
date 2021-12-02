@@ -4,7 +4,7 @@ import com.store.electronic.entity.User;
 
 import java.sql.*;
 
-public class RegisterUserDaoImpl implements RegisterUserDao {
+public class RegisterUserDaoImpl implements BaseDAO {
     private static final String ADD_ACCOUNT =
             "INSERT into account(login, password) VALUE (?, ?)";
     private static final String ADD_USER =

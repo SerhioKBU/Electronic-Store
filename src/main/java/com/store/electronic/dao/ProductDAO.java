@@ -7,8 +7,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.store.electronic.utils.JdbcConnect.getConnection;
-
 public class ProductDAO extends EntityDAO<Product> {
     public Product product;
     private static final String INSERT_SQL = "INSERT INTO product" +
