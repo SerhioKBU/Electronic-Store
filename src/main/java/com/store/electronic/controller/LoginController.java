@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController implements Controller {
 
     private UserService userService = new UserService();
+    boolean isFind = false;
 
     @Override
     public ControllerResultDto execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -27,7 +28,7 @@ public class LoginController implements Controller {
         Account account = new Account();
 
         try {
-            account = accountService.findByValue(login);
+            isFind = accountService.findByValue(login);
         } catch (ServiceException e) {
             e.printStackTrace();
             return new ControllerResultDto("error");

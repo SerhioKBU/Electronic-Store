@@ -9,13 +9,12 @@
 <body>
 <a href="basket">view my basket</a>
 
-<c:forEach items="${products}" var="product">
+<c:forEach items="${product}" var="product">
     <br>
     <c:out value="${product.id}"/>
     <c:out value="${product.name}"/>
-    <a href="buyProduct.jsp?productId=${product.id}">Buy these product</a>
+    <a href="addToBasket?productId=${product.id}">Buy these product</a>
 </c:forEach>
-
 
 </body>
 </html>

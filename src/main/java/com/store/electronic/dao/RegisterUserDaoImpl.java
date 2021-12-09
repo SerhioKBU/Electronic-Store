@@ -1,12 +1,13 @@
 package com.store.electronic.dao;
 
+import com.store.electronic.entity.Role;
 import com.store.electronic.entity.User;
 
 import java.sql.*;
 
 public class RegisterUserDaoImpl implements BaseDAO {
     private static final String ADD_ACCOUNT =
-            "INSERT into account(login, password) VALUE (?, ?)";
+            "INSERT into account(login, password, roleId) VALUE (?, ?, (SELECT `id` FROM `role` WHERE `name` = ?))";
     private static final String ADD_USER =
             "INSERT into users(accountId, UserName, Email) VALUES (?, ?, ?)";
 
@@ -24,6 +25,7 @@ public class RegisterUserDaoImpl implements BaseDAO {
 
             preparedStatement.setString(1, user.getAccount().getLogin());
             preparedStatement.setString(2, user.getAccount().getPassword());
+            preparedStatement.setString(3, user.getAccount().getRole().getName().toString());
 
             if (preparedStatement.executeUpdate() > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();

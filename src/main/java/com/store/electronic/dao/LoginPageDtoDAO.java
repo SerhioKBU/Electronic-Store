@@ -6,19 +6,15 @@ import java.sql.*;
 
 public class LoginPageDtoDAO implements BaseDAO {
     private static final String FIND_ACCOUNT_USER_DATA =
-            "SELECT account.login, account.password, users.userName, users.email " +
+            "SELECT account.login, account.password, account.create_time, users.userName, users.email " +
                     "FROM account JOIN users ON account.id = users.accountid WHERE account.login = (?)";
-
-
-    private static final String SQL_FIND_ACCOUNT_BY_LOGIN =
-            "SELECT login, password, name, create_time, account.id, role.id " +
-                    "FROM account JOIN role ON role.id = account.role_id WHERE account.login = ?";
 
     public LoginPageDto assemble(String login) throws DaoException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         LoginPageDto loginPageDtoResult = null;
+        boolean flag = false;
 
         try {
             connection = getConnection();
@@ -34,15 +30,23 @@ public class LoginPageDtoDAO implements BaseDAO {
                 loginPageDtoResult.setPassword(resultSet.getString("account.password"));
                 loginPageDtoResult.setUserName(resultSet.getString("users.userName"));
                 loginPageDtoResult.setEmail(resultSet.getString("users.email"));
+                loginPageDtoResult.setCreate_time(Timestamp.valueOf(resultSet.getString("create_time")).toLocalDateTime());
+                flag = true;
             }
-
+            connection.commit();
         } catch (SQLException e) {
+            try {
+                assert connection != null;
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             e.printStackTrace();
             throw new DaoException("Failed to connect table account");
         } finally {
             close(resultSet);
             close(preparedStatement);
-            close(connection);
+            closeConnectionWithCommitTrue(connection);
         }
         return loginPageDtoResult;
     }

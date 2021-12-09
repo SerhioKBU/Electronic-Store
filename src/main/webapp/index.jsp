@@ -3,20 +3,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
     <title>Electronic store</title>
+    <style>
+        .block3 {
+            color: #a10606;
+        }
+    </style>
 </head>
-<body>
-<div>
-    <h1>ELECTRONIC STORE</h1>
-</div>
 
-<div>       <!-- content -->
-    <div>    <!-- buttons holder -->
+<body>
+    <div>
+        <h2 class="block">ELECTRONIC STORE</h2>
+    </div>
+
+    <div class="block2">    <!-- buttons holder -->
         <button onclick="location.href='/electronic-store/registration'">Registration</button>
         <button onclick="location.href='/electronic-store/login'">Login</button>
         <button onclick="location.href='/electronic-store/category'">Category</button>
-    </div>
-</div>
+        <button onclick="location.href='/electronic-store/basket'">Basket</button>
 
+        <p class="block3">
+        <c:if test="${sessionScope.authUser != null}">
+            <a>
+                    ${sessionScope.authUser.role} : ${sessionScope.authUser.login}
+            </a>
+        </c:if>
+        </p>
+    </div>
 </body>
 </html>

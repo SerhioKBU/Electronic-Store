@@ -7,7 +7,7 @@
 <body>
 <form method="post">
     <p>"ELECTRONIC STORE"</p>
-    <p><h2>Registration:</h2>
+    <h2>Registration:</h2>
     Please enter your login
     <br>
     <label>

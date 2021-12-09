@@ -1,5 +1,5 @@
-# SET FOREIGN_KEY_CHECKS=0;
-# SET FOREIGN_KEY_CHECKS=1;
+ SET FOREIGN_KEY_CHECKS=0;
+ SET FOREIGN_KEY_CHECKS=1;
 
 Insert Into account(login, password) value ('Serhio1982', 'qwerty');
 Insert Into account(login, password) value ('Batman', '1234');
@@ -14,6 +14,9 @@ Insert Into category(name) value ('Toys');
 
 Insert Into product(CategoryId, name, cost) value (2, 'Samsung', 750);
 Insert Into product(CategoryId, name, cost) value (2, 'Philips', 480);
+
+Insert Into role(name) value ('admin');
+Insert Into role(name) value ('user');
 
 Insert Into basket(UserId, ProductId) value (1, 1);
 Insert Into basket(UserId, ProductId) value (1, 2);

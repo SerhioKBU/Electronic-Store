@@ -13,10 +13,11 @@ public class Product extends BaseEntity {
         super(null);
     }
 
-    public Product(Integer id, int cost, String name, Category category) {
+    public Product(Integer id, String name, int cost, Category category, int quantity) {
         super(id);
         this.cost = cost;
         this.name = name;
         this.category = category;
+        this.quantity = quantity;
     }
 }

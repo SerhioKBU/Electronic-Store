@@ -1,16 +1,32 @@
 package com.store.electronic.dao;
 
 import com.store.electronic.entity.Basket;
+import com.store.electronic.entity.Category;
 import com.store.electronic.entity.Product;
+import com.store.electronic.entity.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class BasketDaoImpl extends EntityDAO<Basket> implements BasketDAO<Basket>{
+public class BasketDaoImpl implements BasketDAO<Basket>, BaseDAO{
     private static final String INSERT_BASKET_SQL = "INSERT INTO Basket(UserId, ProductId) VALUES(?, ?)";
     private static final String DELETE_BASKET_SQL = "DELETE FROM Basket WHERE userId = ?";
+    private static final String FIND_BY_ID = "select " +
+            "basket.id as basketId, " +
+            "c.id       as carId, " +
+            "c.name     as carName, " +
+            "c.price    as carPrice, " +
+            "b.id       as brandId, " +
+            "b.name     as brandName " +
+            "FROM basket basket " +
+            " INNER JOIN users u on u.id = basket.userId " +
+            " INNER JOIN car c on c.id = basket.carId " +
+            " INNER JOIN brand b on c.brandid = b.id  " +
+            " where u.id = ?";
 
     @Override
     public Basket insertOrUpdate(Basket basket) throws DaoException {
@@ -30,12 +46,6 @@ public class BasketDaoImpl extends EntityDAO<Basket> implements BasketDAO<Basket
         }
     }
 
-    @Override
-    Integer create(Basket type) throws DaoException {
-        return null;
-    }
-
-    @Override
     public void delete(Basket basket) throws DaoException {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BASKET_SQL)) {
@@ -47,13 +57,41 @@ public class BasketDaoImpl extends EntityDAO<Basket> implements BasketDAO<Basket
         }
     }
 
-    @Override
-    public List findAll() throws DaoException {
-        return null;
-    }
+    public Basket findById(User user) throws DaoException {
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID)) {
+            preparedStatement.setInt(1, user.getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-    @Override
-    public Basket getById(int id) throws DaoException {
-        return null;
+            Basket basket = new Basket(null, null, null);
+            ArrayList<Product> products = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int basketId = resultSet.getInt("basketId");
+                basket.setId(basketId);
+
+                int catId = resultSet.getInt("catId");
+                String catName = resultSet.getString("catName");
+                Category category = new Category(catId, catName);
+
+                int productId = resultSet.getInt("productId");
+                String productName = resultSet.getString("productName");
+                int productPrice = resultSet.getInt("productPrice");
+                int quantity = resultSet.getInt("quantity");
+
+                Product product = new Product(productId, productName, productPrice, category, quantity);
+                products.add(product);
+            }
+            basket.setProducts(products);
+            basket.setUser(user);
+
+            if (basket.getId() == null) {
+                return null;
+            }
+
+            return basket;
+        } catch (SQLException  e) {
+            throw new DaoException();
+        }
     }
 }

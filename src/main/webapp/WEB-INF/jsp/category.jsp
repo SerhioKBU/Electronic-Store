@@ -5,20 +5,22 @@
 
 <html>
 <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
     <title>ELECTRONIC STORE</title>
 </head>
 
 <body>
-<div>
-    <h1>ELECTRONIC STORE</h1>
-</div>
+    <div>
+        <h1 class="block">ELECTRONIC STORE</h1>
+    </div>
 
-<div>
     <div>
         <div>
-            <h2>Categories group</h2>
-        </div>
-    <c:forEach var="service" items="${sessionScope.serviceList}">
+            <div>
+                <h2 class="block"> Categories group</h2>
+            </div>
+            <c:forEach var="service" items="${sessionScope.serviceList}">
 
         <tr>
             <td>
@@ -31,6 +33,13 @@
         </tr>
 
     </c:forEach>
+
+        <%
+            java.util.Date now = new java.util.Date();
+            String time = "Current time: " + now;
+        %>
+        <%= time %>
+
 <%--        <%--%>
 <%--            List<Category> serviceList = (List<Category>) request.getAttribute("serviceList");--%>
 
@@ -42,11 +51,11 @@
 <%--                out.println("</ui>");--%>
 <%--            } else out.println("<p>There are no users yet!</p>");--%>
 <%--        %>--%>
+        </div>
     </div>
-</div>
 
-<div>
-    <button onclick="location.href='/'">Back to main menu</button>
-</div>
+    <div>
+        <button onclick="location.href='/'">Back to main menu</button>
+    </div>
 </body>
 </html>

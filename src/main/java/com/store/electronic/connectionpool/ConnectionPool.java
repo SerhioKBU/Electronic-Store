@@ -3,6 +3,9 @@ package com.store.electronic.connectionpool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 import java.util.concurrent.Executor;
@@ -16,10 +19,10 @@ public class ConnectionPool implements ConnectionBuilder{
 
     private final Stack<Connection> connectionPool = new Stack<>();
     private final Set<Connection> occupiedConnection = new HashSet<>();
-    private Properties properties;
-    private static final String USER  = "root";
-    private static final String PASSWORD  = "7454378";
-    private static final String URL = "jdbc:mysql://localhost:3306/electronic-store";
+    private FileInputStream fis;
+//    private static final String USER  = "root";
+//    private static final String PASSWORD  = "7454378";
+//    private static final String URL = "jdbc:mysql://localhost:3306/electronic-store";
     private final int minPool = 4;
     private final int maxPool = 8;
     private int connNum = 0;
@@ -89,12 +92,32 @@ public class ConnectionPool implements ConnectionBuilder{
     private Connection createNewConnection() {
         Connection connection = null;
         try {
+            // path to your property file
+            fis = new FileInputStream("e:/electronic-store/database.properties");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (fis == null) {
+            System.out.println("----Sorry, unable to find file properties----");
+        }
+        Properties properties = new Properties();
+        try {
+            properties.load(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String driver = properties.getProperty("db.driver");
+        String user = properties.getProperty("db.user");
+        String pass = properties.getProperty("db.pass");
+        String url = properties.getProperty("db.url");
+
+        try {
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                Class.forName(driver);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            connection = DriverManager.getConnection(url, user, pass);
         } catch (SQLException e) {
             e.printStackTrace();
         }

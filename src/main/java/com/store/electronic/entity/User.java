@@ -3,6 +3,8 @@ package com.store.electronic.entity;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.util.Objects;
+
 @Data
 @Accessors(chain = true)
 public class User extends BaseEntity{
@@ -15,6 +17,20 @@ public class User extends BaseEntity{
         super(id);
         this.userName = userName;
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        User user = (User) o;
+        return Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(account, user.account) && Objects.equals(money, user.money);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), userName, email, account, money);
     }
 
     public User() {

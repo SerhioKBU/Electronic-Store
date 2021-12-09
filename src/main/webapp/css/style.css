@@ -1,3 +1,33 @@
-p {
-    color: limegreen;
+body {
+    margin: 0 auto;
+    background-color: tan;
+    /*justify-content: center;*/
+}
+
+.block {
+    text-align: center;
+    text-shadow: #a10606;
+    background-color: lightseagreen;
+    width: 30%;
+    margin: 0 auto;
+    padding: 2%;
+}
+
+.block2 {
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    padding: 2%;
+}
+
+.text-line {
+   color: #1d7308;
+}
+
+.block3 {
+    text-align: center;
+    background-color: lightseagreen;
+    width: 30%;
+    margin: 0 auto;
+    padding: 2%;
 }

@@ -25,7 +25,7 @@ public class AccountService implements Service<Account>{
         }
     }
 
-    public Account findByValue(String value) throws ServiceException {
+    public boolean findByValue(String value) throws ServiceException {
         try {
             return accountDAO.find(value);
         } catch (DaoException e) {

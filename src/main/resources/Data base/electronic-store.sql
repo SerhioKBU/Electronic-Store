@@ -44,6 +44,14 @@ create table account(
                             Id int primary key AUTO_INCREMENT,
                             login varchar(50),
                             password varchar(50),
-                            create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                            create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            roleId int,
+                            FOREIGN KEY (roleId) REFERENCES role(Id)
+
 
 );
+
+create table role(
+                            Id int primary key AUTO_INCREMENT,
+                            name ENUM('admin', 'user') NOT NULL
+)

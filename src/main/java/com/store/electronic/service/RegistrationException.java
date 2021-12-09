@@ -12,7 +12,7 @@ public class RegistrationException extends Exception{
     }
 
     public enum ErrorType{
-        USERNAME_EXIST,
+        LOGIN_EXIST,
         USERNAME_NOT_VALID,
         PASSWORD_WEAK
     }

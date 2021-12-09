@@ -1,6 +1,7 @@
 package com.store.electronic.dao;
 
 import com.store.electronic.entity.Account;
+import com.store.electronic.entity.Role;
 import lombok.SneakyThrows;
 
 import java.sql.*;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class AccountDAO extends EntityDAO<Account> {
     static final String INSERT_DATA
-            = "INSERT account(login, password) VALUE(?, ?))";
+            = "INSERT account(login) VALUE(?))";
     static final String DELETE_ACCOUNT = "DELETE FROM account WHERE id = (?)";
     static final String FIND_ACCOUNT_BY_ID =
             "SELECT login, password, name, create_time FROM account WHERE id = (?)";
@@ -38,30 +39,33 @@ public class AccountDAO extends EntityDAO<Account> {
 
     @Override
     public Account getById(int id) throws DaoException {
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement
-                     = connection.prepareStatement(FIND_ACCOUNT_BY_ID)
-        ) {
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                int userId = resultSet.getInt(1);
-                String login = resultSet.getString(2);
-                String password = resultSet.getString(3);
-
-                return new Account(userId, login, password);
-            }
-            return null;
-        } catch (SQLException throwables) {
-            throw new DaoException();
-        }
+//        try (Connection connection = getConnection();
+//             PreparedStatement preparedStatement
+//                     = connection.prepareStatement(FIND_ACCOUNT_BY_ID)
+//        ) {
+//            preparedStatement.setInt(1, id);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            if (resultSet.next()) {
+//                int userId = resultSet.getInt(1);
+//                String login = resultSet.getString(2);
+//                String password = resultSet.getString(3);
+//                Role role = (resultSet.getString(4));
+//
+//                return new Account(userId, login, password, role);
+//            }
+//            return null;
+//        } catch (SQLException throwables) {
+//            throw new DaoException();
+//        }
+        return null;
     }
 
-    public Account find(String login) throws DaoException {
+    public boolean find(String login) throws DaoException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         Account resultAccount = null;
+        boolean flag = false;
 
         try {
             connection = getConnection();
@@ -70,11 +74,12 @@ public class AccountDAO extends EntityDAO<Account> {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                resultAccount = new Account();
+                resultAccount = new Account().setRole(new Role());
                 resultAccount.setLogin(resultSet.getString("login"));
                 resultAccount.setPassword(resultSet.getString("password"));
                 resultAccount.setCreateTime(Timestamp.valueOf(resultSet.getString("create_time")).toLocalDateTime());
                 resultAccount.setId(resultSet.getInt("account.id"));
+                flag = true;
             }
 
         } catch (SQLException e) {
@@ -85,7 +90,7 @@ public class AccountDAO extends EntityDAO<Account> {
             close(preparedStatement);
             close(connection);
         }
-        return resultAccount;
+        return flag;
     }
 
     @Override
