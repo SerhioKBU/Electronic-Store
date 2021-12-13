@@ -18,6 +18,7 @@ public class ControllerFactory {
         controllerMap.put("POST/registration", new RegistrationController());
         controllerMap.put("GET/registrationProfile", new ShowPageController("registrationProfile"));
         controllerMap.put("GET/category", new CategoryController());
+        controllerMap.put("GET/buyProduct", new BuyProductController());
 
     }
 

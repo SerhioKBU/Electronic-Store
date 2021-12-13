@@ -5,11 +5,15 @@ import com.store.electronic.entity.User;
 
 import java.sql.*;
 
+/**
+ * New user registration
+ * Using transaction method for adding data in tables Account and User
+ */
 public class RegisterUserDaoImpl implements BaseDAO {
     private static final String ADD_ACCOUNT =
-            "INSERT into account(login, password, roleId) VALUE (?, ?, (SELECT `id` FROM `role` WHERE `name` = ?))";
+            "INSERT INTO account(login, password, roleId) VALUE (?, ?, (SELECT `id` FROM `role` WHERE `name` = ?))";
     private static final String ADD_USER =
-            "INSERT into users(accountId, UserName, Email) VALUES (?, ?, ?)";
+            "INSERT INTO users(accountId, UserName, Email) VALUES (?, ?, ?)";
 
     public boolean create(User user) throws DaoException {
         Connection connection = null;

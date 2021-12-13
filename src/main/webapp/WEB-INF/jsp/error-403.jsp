@@ -5,7 +5,11 @@
 <head>
     <title>403</title>
 </head>
-<body>
+<body  class="block">
 Access denied
+
+<div>
+    <button onclick="location.href='/'">Back to main menu</button>
+</div>
 </body>
 </html>

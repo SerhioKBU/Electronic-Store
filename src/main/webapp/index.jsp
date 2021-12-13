@@ -21,7 +21,7 @@
         <button onclick="location.href='/electronic-store/registration'">Registration</button>
         <button onclick="location.href='/electronic-store/login'">Login</button>
         <button onclick="location.href='/electronic-store/category'">Category</button>
-        <button onclick="location.href='/electronic-store/basket'">Basket</button>
+        <button onclick="location.href='/electronic-store/buyProduct'">Products</button>
 
         <p class="block3">
         <c:if test="${sessionScope.authUser != null}">

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
 <%--@elvariable id="loginPageDto" type="com.store.electronic.entity.LoginPageDto"--%>
 <!doctype html>
 <html lang="en">
@@ -15,14 +16,14 @@
 
         <div class="block2">
         User Profile
-        <p>User login : ${loginPageDto.login}</p>
-        <p>User password : ${loginPageDto.password}</p>
-        <p>User name : ${loginPageDto.userName}</p>
-        <p>User email : ${loginPageDto.email}</p>
-        <p>Created time : ${loginPageDto.create_time}</p>
+                <p>User login : ${loginPageDto.login}</p>
+                <p>User password : ${loginPageDto.password}</p>
+                <p>User name : ${loginPageDto.userName}</p>
+                <p>User email : ${loginPageDto.email}</p>
+                <p>Created time : ${loginPageDto.create_time}</p>
         </div>
 
-        <div>
+        <div class="block2">
             <button onclick="location.href='/'">Back to main menu</button>
         </div>
 </body>

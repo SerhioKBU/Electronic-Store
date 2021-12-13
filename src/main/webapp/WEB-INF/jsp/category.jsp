@@ -2,43 +2,42 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.store.electronic.entity.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <title>ELECTRONIC STORE</title>
-</head>
+<!doctype html>
+<html lang="en">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../../css/style.css">
+    <head>
+        <title>Electronic store</title>
+    </head>
 
 <body>
     <div>
-        <h1 class="block">ELECTRONIC STORE</h1>
+        <h2 class="block">ELECTRONIC STORE</h2>
+        <h2 class="block2"> Categories group:</h2>
     </div>
 
-    <div>
-        <div>
+        <div class="block2">
+            <c:forEach var="category" items="${sessionScope.categoryList}">
+            <tr>
+                <td>${category.id}</td>
+                <td>${category.name}</td>
+                <p> </p>
+            </tr>
+            </c:forEach>
             <div>
-                <h2 class="block"> Categories group</h2>
+                <%
+                    java.util.Date now = new java.util.Date();
+                    String time = "Current time: " + now;
+                %>
+                <%= time %>
             </div>
-            <c:forEach var="service" items="${sessionScope.serviceList}">
+                <div>
+                    <button onclick="location.href='/'">Back to main menu</button>
+                </div>
+        </div>
+</body>
+</html>
 
-        <tr>
-            <td>
-                    ${service.id}
-            </td>
-            <td>
-                    ${service.name}
-            </td>
-            <p> </p>
-        </tr>
-
-    </c:forEach>
-
-        <%
-            java.util.Date now = new java.util.Date();
-            String time = "Current time: " + now;
-        %>
-        <%= time %>
 
 <%--        <%--%>
 <%--            List<Category> serviceList = (List<Category>) request.getAttribute("serviceList");--%>
@@ -51,11 +50,3 @@
 <%--                out.println("</ui>");--%>
 <%--            } else out.println("<p>There are no users yet!</p>");--%>
 <%--        %>--%>
-        </div>
-    </div>
-
-    <div>
-        <button onclick="location.href='/'">Back to main menu</button>
-    </div>
-</body>
-</html>

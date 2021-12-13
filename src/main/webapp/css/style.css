@@ -20,14 +20,16 @@ body {
     padding: 2%;
 }
 
-.text-line {
-   color: #1d7308;
-}
-
 .block3 {
     text-align: center;
-    background-color: lightseagreen;
+    background-color: #64ed7b;
     width: 30%;
     margin: 0 auto;
     padding: 2%;
 }
+
+.text-line {
+   color: #fcef37;
+}
+
+

@@ -8,12 +8,14 @@
     <title>Profile of purchases </title>
 </head>
 <body>
-<c:forEach items="${user.userName}" var="user">
+<a href="basket">view my basket</a>
+<c:forEach var="user" items="${user.userName}">
     <br>
     <c:out value="${product.id}"/>
     <c:out value="${product.name}"/>
     <c:out value="${product.cost}"/>
     <c:out value="${product.category}"/>
+    <a href="addToBasket?carId=${car.id}">Buy these car</a>
     <br>
 </c:forEach>
 

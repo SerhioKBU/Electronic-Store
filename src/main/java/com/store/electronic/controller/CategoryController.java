@@ -17,18 +17,18 @@ public class CategoryController implements Controller{
 
     @Override
     public ControllerResultDto execute(HttpServletRequest req, HttpServletResponse resp) {
-        List<Category> serviceList = null;
+        List<Category> categoryList = null;
 
         try {
-            serviceList = categoryService.findAll();
+            categoryList = categoryService.findAll();
         } catch (ServiceException e) {
             e.printStackTrace();
             return new ControllerResultDto("error");
         }
 
         HttpSession session = req.getSession();
-        session.setAttribute("serviceList", serviceList);
-        for (Category s : serviceList) {
+        session.setAttribute("categoryList", categoryList);
+        for (Category s : categoryList) {
             out.println(s);
         }
         return new ControllerResultDto("category");

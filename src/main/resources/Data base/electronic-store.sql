@@ -47,8 +47,6 @@ create table account(
                             create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                             roleId int,
                             FOREIGN KEY (roleId) REFERENCES role(Id)
-
-
 );
 
 create table role(
