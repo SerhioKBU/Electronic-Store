@@ -11,7 +11,7 @@ import java.sql.*;
  */
 public class RegisterUserDaoImpl implements BaseDAO {
     private static final String ADD_ACCOUNT =
-            "INSERT INTO account(login, password, roleId) VALUE (?, ?, (SELECT `id` FROM `role` WHERE `name` = ?))";
+            "INSERT INTO account(login, password, roleId) VALUE (?, ?, (SELECT `id` FROM `role` WHERE `roleName` = ?))";
     private static final String ADD_USER =
             "INSERT INTO users(accountId, UserName, Email) VALUES (?, ?, ?)";
 
@@ -29,7 +29,7 @@ public class RegisterUserDaoImpl implements BaseDAO {
 
             preparedStatement.setString(1, user.getAccount().getLogin());
             preparedStatement.setString(2, user.getAccount().getPassword());
-            preparedStatement.setString(3, user.getAccount().getRole().getName().toString());
+            preparedStatement.setString(3, user.getAccount().getRole().getRoleName().toString());
 
             if (preparedStatement.executeUpdate() > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();

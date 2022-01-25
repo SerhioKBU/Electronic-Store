@@ -31,7 +31,7 @@ public class RegistrationController implements Controller{
 
         boolean isCreated = false;
         boolean isFind = false;
-        String login = req.getParameter("userName");
+        String login = req.getParameter("login");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String name = req.getParameter("name");
@@ -60,8 +60,8 @@ public class RegistrationController implements Controller{
             e.printStackTrace();
             return new ControllerResultDto("error");
         }
-        System.out.println("new login " + login);
-        System.out.println("db login " + account.getLogin());
+//        System.out.println("new login " + login);
+//        System.out.println("db login " + account.getLogin());
 
         if (isFind) {
             //throw new RegistrationException("Login already EXIST", RegistrationException.ErrorType.LOGIN_EXIST);

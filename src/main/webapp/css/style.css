@@ -1,16 +1,27 @@
 body {
     margin: 0 auto;
     background-color: tan;
-    /*justify-content: center;*/
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+table {
+    width: 50%;
 }
 
 .block {
     text-align: center;
     text-shadow: #a10606;
-    background-color: lightseagreen;
+    background-color: #737873;
     width: 30%;
     margin: 0 auto;
     padding: 2%;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    color: #fff;
 }
 
 .block2 {
@@ -22,10 +33,11 @@ body {
 
 .block3 {
     text-align: center;
-    background-color: #64ed7b;
+    background-color: #737873;
     width: 30%;
     margin: 0 auto;
     padding: 2%;
+    color: #eeba37;
 }
 
 .text-line {

@@ -15,7 +15,7 @@
     <c:out value="${product.name}"/>
     <c:out value="${product.cost}"/>
     <c:out value="${product.category}"/>
-    <a href="addToBasket?carId=${car.id}">Buy these car</a>
+    <a href="addToBasket?productId=${product.id}">Buy these product</a>
     <br>
 </c:forEach>
 

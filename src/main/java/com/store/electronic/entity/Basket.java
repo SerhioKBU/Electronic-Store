@@ -9,15 +9,15 @@ import java.util.List;
 @Accessors(chain = true)
 public class Basket extends BaseEntity {
     User user;
-    List<Product> products;
+    List<Category> categories;
 
     public Basket(Integer id) {
         super(null);
     }
 
-    public Basket(Integer id, User user, List<Product> products) {
+    public Basket(Integer id, User user, List<Category> categories) {
         super(id);
         this.user = user;
-        this.products = products;
+        this.categories = categories;
     }
 }

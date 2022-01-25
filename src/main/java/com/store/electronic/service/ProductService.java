@@ -8,10 +8,13 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 
-@AllArgsConstructor
 public class ProductService {
 
-    private ProductDAO productDAO;
+    private final ProductDAO productDAO;
+
+    public ProductService(ProductDAO productDAO) {
+        this.productDAO = productDAO;
+    }
 
     public List<Product> findAll() throws DaoException {
         List<Product> products = productDAO.findAll();

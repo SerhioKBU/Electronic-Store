@@ -5,51 +5,54 @@ drop table IF EXISTS basket;
 
 create table Category(
                          Id int primary key AUTO_INCREMENT,
-                         Name varchar(50)
+                         categoryName varchar(50)
 );
 
-create table Product(
-                        Id int primary key AUTO_INCREMENT,
-                        CategoryId int,
-                        Name varchar(50),
-                        Description varchar(150),
-                        Cost int,
-                        FOREIGN KEY (CategoryId)  REFERENCES Category(Id)
-);
 
 create table Users (
                       Id int primary key AUTO_INCREMENT,
                       accountId int,
-                      UserName varchar(50),
-                      Email varchar(50),
+                      userName varchar(50),
+                      email varchar(50),
                       FOREIGN KEY (accountId)  REFERENCES users(Id)
 );
 
 create table Basket(
                        Id int primary key AUTO_INCREMENT,
-                       UserId int,
-                       ProductId int,
-                       FOREIGN KEY (UserId)  REFERENCES users(Id),
-                       FOREIGN KEY (ProductId)  REFERENCES Product(Id)
+                       userId int,
+                       categoryId int,
+                       FOREIGN KEY (userId)  REFERENCES users(Id),
+                       FOREIGN KEY (categoryId)  REFERENCES category(Id)
 );
 
-create table transaction(
-                            Id int primary key AUTO_INCREMENT,
-                            UserId int,
-                            summa int,
-                            FOREIGN KEY (UserId)  REFERENCES users(Id)
+
+create table Role(
+                     Id int primary key AUTO_INCREMENT,
+                     roleName ENUM('admin', 'user') NOT NULL
+
 );
 
 create table account(
-                            Id int primary key AUTO_INCREMENT,
-                            login varchar(50),
-                            password varchar(50),
-                            create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            roleId int,
-                            FOREIGN KEY (roleId) REFERENCES role(Id)
-);
-
-create table role(
-                            Id int primary key AUTO_INCREMENT,
-                            name ENUM('admin', 'user') NOT NULL
+                     Id int primary key AUTO_INCREMENT,
+                     login varchar(50),
+                     password varchar(50),
+                     create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                     roleId int,
+                     FOREIGN KEY (roleId) REFERENCES role(Id)
 )
+
+# create table Product(
+#                         Id int primary key AUTO_INCREMENT,
+#                         CategoryId int,
+#                         Name varchar(50),
+#                         Description varchar(150),
+#                         Cost int,
+#                         FOREIGN KEY (CategoryId)  REFERENCES Category(Id)
+# );
+
+# create table transaction(
+#                             Id int primary key AUTO_INCREMENT,
+#                             UserId int,
+#                             summa int,
+#                             FOREIGN KEY (UserId)  REFERENCES users(Id)
+# );

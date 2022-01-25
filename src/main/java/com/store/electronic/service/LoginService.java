@@ -12,7 +12,7 @@ public class LoginService {
             return loginPageDtoDAO.assemble(value);
         } catch (DaoException e) {
             e.printStackTrace();
-            throw new ServiceException("failed to read from database");
+            throw new ServiceException("Failed to read from database");
         }
     }
 }

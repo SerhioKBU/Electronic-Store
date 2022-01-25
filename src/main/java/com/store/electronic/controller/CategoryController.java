@@ -1,5 +1,6 @@
 package com.store.electronic.controller;
 
+import com.store.electronic.dao.CategoryDAO;
 import com.store.electronic.entity.Category;
 import com.store.electronic.service.CategoryService;
 import com.store.electronic.service.ServiceException;
@@ -13,7 +14,7 @@ import java.util.List;
 import static java.lang.System.out;
 
 public class CategoryController implements Controller{
-    private CategoryService categoryService = new CategoryService();
+    private final CategoryService categoryService = new CategoryService(new CategoryDAO());
 
     @Override
     public ControllerResultDto execute(HttpServletRequest req, HttpServletResponse resp) {

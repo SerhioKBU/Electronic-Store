@@ -6,7 +6,8 @@ import java.sql.*;
 
 public class LoginPageDtoDAO implements BaseDAO {
     private static final String FIND_ACCOUNT_USER_DATA =
-            "SELECT account.login, account.password, account.create_time, users.userName, users.email " +
+            "SELECT account.login, account.password, account.create_time, " +
+                    "users.userName, users.email " +
                     "FROM account JOIN users ON account.id = users.accountid WHERE account.login = (?)";
 
     public LoginPageDto assemble(String login) throws DaoException {

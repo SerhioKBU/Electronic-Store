@@ -3,7 +3,10 @@
 <head>
     <title>Error</title>
 </head>
-<body>
-<h6>ERROR</h6>
-</body>
+    <body>
+        <h6>ERROR</h6>
+        <div>
+            <button onclick="location.href='/'">Back to main menu</button>
+        </div>
+    </body>
 </html>

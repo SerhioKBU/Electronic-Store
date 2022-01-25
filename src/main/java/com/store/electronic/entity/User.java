@@ -13,6 +13,13 @@ public class User extends BaseEntity{
     private Account account;
     private Integer money;
 
+    public User(Integer id, Account account, String userName, String email) {
+        super(id);
+        this.account = account;
+        this.userName = userName;
+        this.email = email;
+    }
+
     public User(Integer id, String userName, String email) {
         super(id);
         this.userName = userName;

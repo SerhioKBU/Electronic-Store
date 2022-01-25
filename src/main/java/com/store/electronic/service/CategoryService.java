@@ -11,6 +11,10 @@ import java.util.List;
 public class CategoryService implements Service<Category>{
     private CategoryDAO categoryDAO = new CategoryDAO();
 
+    public CategoryService(CategoryDAO categoryDAO) {
+        this.categoryDAO = categoryDAO;
+    }
+
     @Override
     public List<Category> findAll() throws ServiceException {
         try {
@@ -22,8 +26,13 @@ public class CategoryService implements Service<Category>{
     }
 
     @Override
-    public Object findById(Integer id) throws ServiceException {
-        return null;
+    public Category findById(Integer id) throws ServiceException {
+        try {
+            return categoryDAO.getById(id);
+        } catch (DaoException e) {
+            e.printStackTrace();
+            throw new ServiceException("");
+        }
     }
 
     @Override

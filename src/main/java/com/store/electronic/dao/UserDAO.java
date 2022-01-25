@@ -44,11 +44,22 @@ public class UserDAO extends EntityDAO<User> {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+//                user.setId(resultSet.getInt(1));
+//                user.setUserName(resultSet.getString(2));
+//                user.setEmail(resultSet.getString(3));
                 int userId = resultSet.getInt(1);
                 String userName = resultSet.getString(2);
                 String email = resultSet.getString(3);
+
                 return new User(userId, userName, email);
             }
+
+//            new User();
+//            user.setId(resultSet.getInt(1));
+//            user.getAccount().setId(resultSet.getInt(2));
+//            user.setUserName(resultSet.getString(3));
+//            user.setEmail(resultSet.getString(4));
+//            return user;
 
             return null;
         } catch (SQLException throwables) {

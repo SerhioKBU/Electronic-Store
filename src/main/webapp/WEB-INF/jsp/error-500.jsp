@@ -4,6 +4,10 @@
     <title>Title</title>
 </head>
 <body>
-Server's ERROR
+        Server's ERROR
+
+        <div>
+            <button onclick="location.href='/'">Back to main menu</button>
+        </div>
 </body>
 </html>

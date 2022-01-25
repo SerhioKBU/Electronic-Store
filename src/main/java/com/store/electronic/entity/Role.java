@@ -7,19 +7,19 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 
 public class Role extends BaseEntity {
-    private RoleEnum name;
+    private RoleEnum roleName;
 
     public Role(){
     }
 
     public Role(RoleEnum name) {
-        this.name = name;
+        this.roleName = name;
     }
 
     @Override
     public String toString() {
         return "Role{" +
-                "name=" + name +
+                "name=" + roleName +
                 '}';
     }
 }

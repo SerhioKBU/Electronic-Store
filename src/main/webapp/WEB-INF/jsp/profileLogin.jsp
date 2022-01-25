@@ -15,12 +15,18 @@
         </div>
 
         <div class="block2">
-        User Profile
-                <p>User login : ${loginPageDto.login}</p>
-                <p>User password : ${loginPageDto.password}</p>
-                <p>User name : ${loginPageDto.userName}</p>
-                <p>User email : ${loginPageDto.email}</p>
-                <p>Created time : ${loginPageDto.create_time}</p>
+            <p class="block3">
+                <c:if test="${sessionScope.authUser != null}">
+                    <a>
+                            ${sessionScope.authUser.role} : ${sessionScope.authUser.login}
+                    </a>
+                </c:if>
+            </p>
+                <p align="left">Login : ${loginPageDto.login}</p>
+                <p align="left">Password : ${loginPageDto.password}</p>
+                <p align="left">Name : ${loginPageDto.userName}</p>
+                <p align="left">Email : ${loginPageDto.email}</p>
+                <p align="left">Created time : ${loginPageDto.create_time}</p>
         </div>
 
         <div class="block2">

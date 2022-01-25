@@ -8,10 +8,11 @@ import java.util.List;
 
 public class CategoryDAO extends EntityDAO<Category> {
 
-    private static final String INSERT_SQL = "Insert Into category(name) Values(?)";
-    private static final String SELECT_ALL = "Select id, name from category";
+    private static final String INSERT_SQL = "Insert Into category(categoryName) Values(?)";
+    private static final String SELECT_ALL = "Select id, categoryName from category";
     public static final String DELETE_DATA = "Delete from category Where id = (?)";
-    public static final String SELECT_ALL_DATA = "SELECT * FROM product";
+    public static final String SELECT_ALL_DATA = "SELECT * FROM category";
+    private static final String SELECT_BY_ID = "SELECT id, categoryName FROM category WHERE id = (?)";
 
     @Override
     public Integer create(Category category) throws DaoException {
@@ -45,19 +46,35 @@ public class CategoryDAO extends EntityDAO<Category> {
         ) {
             while (resultSet.next()) {
                 Integer id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
+                String name = resultSet.getString("categoryName");
                 Category category = new Category(id, name);
 
                 categories.add(category);
             }
         } catch (SQLException throwables) {
-            throw new DaoException();
+            throw new DaoException("Failed to find all");
         }
         return categories;
     }
 
     @Override
     public Category getById(int id) throws DaoException {
-        return null;
+        try (
+                Connection connection = getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_ID);
+        ) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Category category = new Category();
+                category.setId(resultSet.getInt("id"));
+                category.setName(resultSet.getString("categoryName"));
+                return category;
+            }
+
+            return null;
+        } catch (SQLException throwables) {
+            throw new DaoException("Failed to get by ID");
+        }
     }
 }

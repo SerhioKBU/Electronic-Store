@@ -1,21 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%--@elvariable id="product" type="com.store.electronic.entity.Product"--%>
+<%--@elvariable id="category" type="com.store.electronic.entity.Category"--%>
 <%--@elvariable id="basket" type="com.store.electronic.entity.Basket"--%>
 <html>
 <head>
     <title>Profile </title>
 </head>
 <body>
-<c:forEach items="${basket.products}" var="product">
+<c:forEach items="${basket.categories}" var="category">
     <br>
-    <c:out value="${product.id}"/>
-    <c:out value="${product.name}"/>
+    <c:out value="${category.id}"/>
+    <c:out value="${category.name}"/>
     <br>
 </c:forEach>
 
-<a href="products.jsp">view all products</a>
+<a href="category">view all category</a>
 
 </body>
 </html>

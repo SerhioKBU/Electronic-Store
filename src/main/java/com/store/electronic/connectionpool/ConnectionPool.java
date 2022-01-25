@@ -15,16 +15,18 @@ import java.util.concurrent.Executor;
  */
 public class ConnectionPool implements ConnectionBuilder{
 
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     private static final Logger logger = LoggerFactory.getLogger(ConnectionPool.class);
 
     private final Stack<Connection> connectionPool = new Stack<>();
     private final Set<Connection> occupiedConnection = new HashSet<>();
     private FileInputStream fis;
-//    private static final String USER  = "root";
-//    private static final String PASSWORD  = "7454378";
-//    private static final String URL = "jdbc:mysql://localhost:3306/electronic-store";
     private final int minPool = 4;
-    private final int maxPool = 8;
+    private final int maxPool = 50;
     private int connNum = 0;
 
     private static final String SQL_VERIFICATION_CONNECTION = "select 1";
@@ -43,10 +45,10 @@ public class ConnectionPool implements ConnectionBuilder{
         Connection connection = null;
         if (isFull()) {
             try {
-                throw new SQLException("The connection pool is full");
+                throw new SQLException(ANSI_RED + "The connection pool is full" + ANSI_RESET);
             } catch (SQLException e) {
                 e.printStackTrace();
-                logger.error("Fail to get connection", e);
+                logger.error(ANSI_PURPLE + "Fail to get connection" + ANSI_RESET, e);
             }
         }
 
@@ -62,6 +64,7 @@ public class ConnectionPool implements ConnectionBuilder{
      * @return check the probability to put a connection
      */
     private synchronized boolean isFull(){
+        System.out.println("connection's number are "+connNum);
         return ((connectionPool.size() == 0) && (connNum >= maxPool));
     }
 
@@ -93,12 +96,13 @@ public class ConnectionPool implements ConnectionBuilder{
         Connection connection = null;
         try {
             // path to your property file
-            fis = new FileInputStream("e:/electronic-store/database.properties");
+            fis = new FileInputStream("h:/electronic-store/database.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         if (fis == null) {
-            System.out.println("----Sorry, unable to find file properties----");
+            System.out.println("----Sorry, unable to find properties file----");
+            System.out.println(ANSI_GREEN + "----Check a path to the properties file----" + ANSI_RESET);
         }
         Properties properties = new Properties();
         try {

@@ -23,9 +23,13 @@ public class BasketService {
         try {
             Basket basket = basketDao.findById(user);
 
+            System.out.println("BASKET: " + basket);
             return basket == null ? new Basket(null, user, new ArrayList<>()) : basket;
+
         } catch (DaoException e) {
+            e.printStackTrace();
             throw new ServiceException("Failed to find");
+
         }
     }
 }

@@ -13,24 +13,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/electronic-store/*")
+@WebServlet(urlPatterns = "/electronic-store/*")
 public class DispatcherServlet extends HttpServlet {
 
-    private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
+    private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class.getName());
     private ControllerFactory controllerFactory;
 
     @Override
     public void init() throws ServletException {
+        if(logger.isInfoEnabled()) {
+            logger.info(ANSI_GREEN + "Servlet is created" + ANSI_RESET);
+        }
         controllerFactory = new ControllerFactory();
         super.init();
-        logger.info("Servlet is created");
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Controller controller = controllerFactory.getController(req);
+        System.out.println(controller);
         try {
             ControllerResultDto result = controller.execute(req, resp);
             doForwardOrRedirect(result, req, resp);
@@ -44,7 +50,13 @@ public class DispatcherServlet extends HttpServlet {
             resp.sendRedirect(result.getView());
         } else {
             String path = "/WEB-INF/jsp/" + result.getView() + ".jsp";
+            System.out.println("Path: " + path);
             req.getRequestDispatcher(path).forward(req, resp);
         }
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
     }
 }
